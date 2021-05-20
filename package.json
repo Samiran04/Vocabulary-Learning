@@ -1,0 +1,23 @@
+{
+  "name": "vocabularylearning",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Samiran04/Vocabulary-Learning.git"
+  },
+  "author": "Samiran Roy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Samiran04/Vocabulary-Learning/issues"
+  },
+  "homepage": "https://github.com/Samiran04/Vocabulary-Learning#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.12.10"
+  }
+}
