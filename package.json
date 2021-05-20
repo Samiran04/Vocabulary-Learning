@@ -18,6 +18,9 @@
   "homepage": "https://github.com/Samiran04/Vocabulary-Learning#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^5.12.10"
+    "express-session": "^1.17.2",
+    "mongoose": "^5.12.10",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
   }
 }
