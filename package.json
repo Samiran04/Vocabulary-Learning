@@ -17,9 +17,12 @@
   },
   "homepage": "https://github.com/Samiran04/Vocabulary-Learning#readme",
   "dependencies": {
+    "connect-mongo": "^4.4.1",
+    "connect-mongodb-session": "^2.4.1",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "mongoose": "^5.12.10",
+    "node-fetch": "^2.6.1",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"
   }
