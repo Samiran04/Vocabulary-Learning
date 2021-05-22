@@ -6,8 +6,10 @@ module.exports.findWord = function(req, res){
     .then((result) => {
         return result.json();
     }).then((actulaData) => {
-        console.log(actulaData);
-        return res.redirect('back');
+        //console.log(actulaData[0]);
+        return res.render('search-page', {
+            word: actulaData[0]
+        });
     }).catch((err) => {
         if(err)
         {
@@ -21,4 +23,32 @@ module.exports.findWord = function(req, res){
 
 module.exports.searchPage = async function(req, res){
     return res.render('search-page');
+}
+
+module.exports.translate = function(req, res){
+
+    fetch("https://microsoft-translator-text.p.rapidapi.com/BreakSentence?api-version=3.0", {
+        "method": "POST",
+        "headers": {
+            "content-type": "application/json",
+            "x-rapidapi-key": "1306a4a87emsh96d2efc90adfa46p14ade9jsn76af57496012",
+            "x-rapidapi-host": "microsoft-translator-text.p.rapidapi.com"
+        },
+        "body": [
+            {
+                "Text": "How are you? I am fine. What did you do today?"
+            }
+        ]
+    })
+    .then(response => {
+        //console.log(response);
+        return response.json();
+    })
+    .then(result => {
+        console.log(result);
+        return res.redirect('back');
+    })
+    .catch(err => {
+        console.error(err);
+    });
 }

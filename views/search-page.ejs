@@ -20,5 +20,26 @@
             </select>
             <input type="submit" value="Search">
         </form>
+        <form action="/word/translate" method="GET">
+            <input type="submit" value="Translate">
+        </form>
+
+        <% if(locals.word){ %>
+            <% for(m of word.meanings){ %>
+                <p><b>Parts Of Speech: </b><%= m.partOfSpeech %></p>
+
+                <% for(d of m.definitions){ %>
+                    <p><b>Defination: </b><%= d.definition %></p>
+                    <p><b>Example: </b><%= d.example %></p>
+
+                    <% if(d.synonyms){ %>
+                        <b>Synonyms</b>
+                        <% for(s of d.synonyms){ %>
+                            <%= s %>,
+                        <% } %>
+                    <% } %>
+                <% } %>
+            <% } %>
+        <% } %>
     </body>
 </html>
