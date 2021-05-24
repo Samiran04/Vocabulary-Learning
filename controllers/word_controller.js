@@ -1,4 +1,6 @@
 const fetch = require('node-fetch');
+const Words = require('../models/words');
+const User = require('../models/user');
 
 module.exports.findWord = function(req, res){
 
@@ -51,4 +53,26 @@ module.exports.translate = function(req, res){
     .catch(err => {
         console.error(err);
     });
+}
+
+module.exports.getWords = async function(req, res){
+    try{
+
+        let temp = await Words.find({});
+
+        let words = temp[0].list;
+
+        let user = await User.findById(req.user._id);
+
+        let len = await Math.min(user.day+4, words.length);
+
+        let myWords = await words.slice(user.day, len);
+
+        console.log(myWords);
+
+        return res.redirect('back');
+    }catch(err){
+        console.log('Error in get words', err);
+        return;
+    }
 }
