@@ -16,6 +16,9 @@ const userSchema = new mongoose.Schema({
     day: {
         type: Number
     },
+    time: {
+        type: Number
+    },
     list: [
         {
             type: String

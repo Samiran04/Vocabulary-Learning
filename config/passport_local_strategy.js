@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const forTime = require('./get_time');
 
 passport.use(new LocalStrategy({
     usernameField: 'email'
@@ -17,6 +18,23 @@ passport.use(new LocalStrategy({
         }
         else
         {
+            let curr_time = forTime.time();
+
+            let user_time = user.time;
+            let hour = 24;
+            let day = (curr_time - user_time) / hour;
+            let user_day = user.day;
+
+            if(user_day + 1 < day)
+            {
+                user.time = curr_time;
+            }
+            if(user_day < day){
+                user.day++;
+            }
+
+            user.save();
+
             return done(null, user);
         }
     });

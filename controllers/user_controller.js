@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const forTime = require('../config/get_time');
 
 module.exports.signIn = async function(req, res){
     return res.render('signIn');
@@ -18,12 +19,15 @@ module.exports.create = async function(req, res){
         }
         else
         {
+            let curr_time = await forTime.time();
+
             user = await User.create({
                 name: req.body.name,
                 email: req.body.email,
                 password: req.body.password,
                 day: 0,
-                list: []
+                list: [],
+                time: curr_time
             });
 
             return res.redirect('/users/sign-in');
